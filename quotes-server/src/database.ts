@@ -1,33 +1,30 @@
 import { Sequelize } from "sequelize";
+import config from '@/config';
 
 const validateEnvironmentVariables = () => {
-  if(!process.env.MYSQL_DATABASE){
+  if(!config.MYSQL_DATABASE){
     throw new Error('Missing environment variable MYSQL_DATABASE');
   }
-  if(!process.env.MYSQL_USER){
+  if(!config.MYSQL_USER){
     throw new Error('Missing environment variable MYSQL_USER');
   }
-  if(!process.env.MYSQL_ROOT_PASSWORD){
+  if(!config.MYSQL_ROOT_PASSWORD){
     throw new Error('Missing environment variable MYSQL_ROOT_PASSWORD');
   }
-  if(!process.env.DB_HOST){
+  if(!config.DB_HOST){
     throw new Error('Missing environment variable DB_HOST');
   }
 
-  if(!process.env.DB_PORT){
+  if(!config.DB_PORT){
     throw new Error('Missing environment variable DB_PORT');
   }
 
-  if(isNaN(parseInt(process.env.DB_PORT))){
-    throw new Error('DB_PORT must be a number');
-  }
-
   return {
-    MYSQL_DATABASE: process.env.MYSQL_DATABASE,
-    MYSQL_USER: process.env.MYSQL_USER,
-    MYSQL_ROOT_PASSWORD: process.env.MYSQL_ROOT_PASSWORD,
-    DB_HOST: process.env.DB_HOST,
-    DB_PORT: parseInt(process.env.DB_PORT)
+    MYSQL_DATABASE: config.MYSQL_DATABASE,
+    MYSQL_USER: config.MYSQL_USER,
+    MYSQL_ROOT_PASSWORD: config.MYSQL_ROOT_PASSWORD,
+    DB_HOST: config.DB_HOST,
+    DB_PORT: config.DB_PORT
   }
 };
 const sequelize = (() => {

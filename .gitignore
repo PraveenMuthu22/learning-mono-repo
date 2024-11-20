@@ -1,8 +1,8 @@
 # Node modules
 node_modules/
 
-# Environment variables
-.env
+# Configs
+config.ts
 
 # OS-specific files
 .DS_Store
