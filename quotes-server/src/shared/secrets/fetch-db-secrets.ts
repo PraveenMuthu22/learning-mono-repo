@@ -1,4 +1,4 @@
-const fetchSecret = (secretName) => {
+const fetchSecret = (secretName: string) => {
   switch (secretName) {
     case 'password':
       return 'password1';
