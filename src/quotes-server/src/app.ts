@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import sequelize from '@/src/database';
+import sequelizeInstance from '@/src/sequelize-instance';
 import Quote from '@/src/models/Quote';
 
 const app = express();
@@ -8,7 +8,7 @@ const port = 3000;
 // GET endpoint to retrieve a random quote
 app.get('/quote', async (req: Request, res: Response) => {
   try {
-    const randomQuote = await Quote.findOne({ order: sequelize.random() });
+    const randomQuote = await Quote.findOne({ order: sequelizeInstance.random() });
     if(!randomQuote) {
       return res.status(404).json({ error: 'No quotes found' });
     }

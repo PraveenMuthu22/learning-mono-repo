@@ -1,0 +1,17 @@
+{
+  "name": "quotes-database",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "init": "tsx scripts/init-script.ts",
+    "build-image": "npm run init && docker build -t quotes-db .",
+    "start-container": "docker run --name quotes-db --env-file .env -p 3306:3306 -d quotes-db",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -6,7 +6,10 @@
     "module": "commonjs",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@quotes-database/*": ["./src/quotes-database/*"],
+      "@quotes-server/*": ["./src/quotes-server/*"],
+      "@shared/*": ["./src/shared/*"]
     },                                                   
     "esModuleInterop": true,                
     "forceConsistentCasingInFileNames": true,        

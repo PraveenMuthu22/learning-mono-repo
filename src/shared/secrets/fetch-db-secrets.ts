@@ -3,7 +3,7 @@ const fetchSecret = (secretName: string) => {
     case 'password':
       return 'password1';
     case 'databaseName':
-      return 'quotesdatabase';
+      return 'app_database';
     case 'port':
       return '3306';
     default:

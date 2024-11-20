@@ -1,6 +1,6 @@
 
 import * as fs from 'fs';
-import fetchDbSecrets from '@/src/shared/secrets/fetch-db-secrets';
+import fetchDbSecrets from '@shared/secrets/fetch-db-secrets';
 
 const envVariables = {
   ...fetchDbSecrets(),

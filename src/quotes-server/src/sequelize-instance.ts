@@ -27,7 +27,7 @@ const validateEnvironmentVariables = () => {
     DB_PORT: config.DB_PORT
   }
 };
-const sequelize = (() => {
+const sequelizeInstance = (() => {
   const {MYSQL_DATABASE, MYSQL_USER, MYSQL_ROOT_PASSWORD, DB_HOST, DB_PORT} =  validateEnvironmentVariables();
 
   const sequelize = new Sequelize(MYSQL_DATABASE, MYSQL_USER, MYSQL_ROOT_PASSWORD, {
@@ -35,18 +35,16 @@ const sequelize = (() => {
     port: DB_PORT,
     dialect: 'mysql'
   });
-  
-  (async () => {
-    try {
-      await sequelize.authenticate();
-      console.log('Connection has been established successfully.');
-    } catch(error){
-      console.log('Unable to connect to the database:', error);
-    }
+
+  sequelize.authenticate().then(() => {
+    console.log('Connection has been established successfully.');
+  }).catch((error) => {
+    console.log('Unable to connect to the database:', error);
+    throw new Error('Unable to connect to the database');
   });
 
   return sequelize;
 })(); 
 
 
-export default sequelize;
+export default sequelizeInstance;
